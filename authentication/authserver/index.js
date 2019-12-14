@@ -6,6 +6,8 @@ const morgan = require('morgan');
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
 mongoose.Promise = global.Promise;
 // setup connect to MONGOOOOO db
     // DB Setup
@@ -20,7 +22,9 @@ connection.on("connected", function() {
 // body-parser
 //app setup
 app.use(morgan('combined'));
+app.use(cors());
 app.use(bodyParser.json({ type: '*/*' }));
+
 router(app);
 
 //server sertup Node.js stuff sdwsfd
